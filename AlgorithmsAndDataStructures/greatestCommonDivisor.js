@@ -12,4 +12,21 @@ function greatestCommonDivisor(a, b) {
   return greatestDivisor;
 }
 
-console.log(greatestCommonDivisor(4, 8));
+// more optimal algorithm
+function gcd(a, b) {
+  let reminder;
+  // while reminder is not a zero (target condition)
+  while (b !== 0) {
+    // calculating reminder
+    reminder = a % b;
+    
+    // saving second number in memory
+    a = b;
+    //saving reminder to % a on it in future if it is not a zero
+    b = reminder;
+  }
+
+  return a;
+}
+
+console.log(gcd(68, 36));

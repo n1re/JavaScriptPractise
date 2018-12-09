@@ -3,6 +3,10 @@ class Log {
     this._messages = [];
   }
 
+  get messages() {
+    return this._messages;
+  }
+
   add(message) {
     this._messages.push({
       message: message,

@@ -9,7 +9,7 @@ const created = new create()
  *  1. new object has been created
  *  2. it links with prototype
  *  3. it binds as a context for the function call
- *  4. exept returning custom object, call will return constructed object
+ *  4. except returning custom object, call will return constructed object
  */
 
 console.log(created.a) // 2
@@ -22,6 +22,6 @@ function createAndReturn() {
     }
 }
 
-const createdAndReturned = createAndReturn()
+const createdAndReturned = new createAndReturn()
 
 console.log(createdAndReturned.a) // 3

@@ -26,7 +26,7 @@ function someTimeOutedFunc() {
 
 someTimeOutedFunc.call(obj)
 
-// under ES6 version of upper pattern
+// under ES6 version of above pattern
 
 function anotherTimeOutedFunc() {
     var self = this;

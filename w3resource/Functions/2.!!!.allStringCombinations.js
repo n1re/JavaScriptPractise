@@ -32,9 +32,8 @@ function allStringCombinations(string) {
 assert.deepEqual(
     allStringCombinations('dog'),
     [
-        'd', 'o',
-        'g', 'od',
-        'gd', 'go',
+        'd', 'o', 'g',
+        'od', 'gd', 'go',
         'dog'
     ]
 )

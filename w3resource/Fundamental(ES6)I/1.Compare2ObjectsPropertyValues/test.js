@@ -3,8 +3,6 @@ const compare = require('./index.js');
 const matches = (obj, source) =>
   Object.keys(source).every(key => obj.hasOwnProperty(key) && obj[key] === source[key]);
 
-const assert = require('assert');
-
 assert(compare({1: 1, 2: 2}, {1: 1, 2: 2}) === true);
 assert(compare({1: 2, 2: 2}, {1: 1, 2: 2}) === false);
 

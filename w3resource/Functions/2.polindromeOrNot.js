@@ -1,5 +1,3 @@
-const assert = require('assert').strict;
-
 function polindromeOrNot(string) {
     const length = string.length
     const iterationsLimit = Math.round(length / 2)

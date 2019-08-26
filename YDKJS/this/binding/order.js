@@ -1,5 +1,3 @@
-const assert = require('assert').strict;
-
 // default binding has the lowest priority
 
 

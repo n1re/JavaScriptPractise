@@ -1,5 +1,3 @@
-const assert = require('assert')
-
 function allStringCombinations(string) {
     const letters = string.split('')
     const combinations = []

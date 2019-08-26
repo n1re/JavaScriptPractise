@@ -1,5 +1,3 @@
-const assert = require('assert').strict
-
 function summTwoValues(a, b) {
     this.val = a + b
 }

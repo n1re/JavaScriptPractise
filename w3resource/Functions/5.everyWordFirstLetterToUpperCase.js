@@ -1,5 +1,3 @@
-const assert = require('assert')
-
 function everyWordFirstLetterToUpperCase(string) {
     const words = string.split(' ')
 

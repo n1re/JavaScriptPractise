@@ -1,5 +1,3 @@
-const assert = require('assert').strict;
-
 function foo() {
 	// возвращаем стрелочную функцию
 	return () => {

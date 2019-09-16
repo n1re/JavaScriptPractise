@@ -1,4 +1,4 @@
-function arrayToKebab(array) {
+function arrayToCamel(array) {
     const toSetFirst = array.map(word => {
         const uppered = word[0].toUpperCase();
         const replaced = word.replace(word[0], uppered);
@@ -9,4 +9,4 @@ function arrayToKebab(array) {
     return toSetFirst.join('');
 }
 
-assert(arrayToKebab(['aass', 'ssaa']) === 'AassSsaa');
+assert(arrayToCamel(['aass', 'ssaa']) === 'AassSsaa');

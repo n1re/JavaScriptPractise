@@ -6,7 +6,9 @@ function arrayToCamel(array) {
         return replaced;
     });
 
+    mapped[0] = mapped[0].toLowerCase();
+
     return mapped.join('');
 }
 
-assert(arrayToCamel(['aass', 'ssaa']) === 'AassSsaa');
+assert(arrayToCamel(['aass', 'ssaa']) === 'aassSsaa');

@@ -20,3 +20,15 @@
  *      enforces strict set of rules as to how these are
  *      accesible to currently executing code
  */
+
+ /**
+  * The scope is nested
+  */
+
+function summ(a) {
+    return a + b;
+}
+
+var b = 1;
+
+console.log(summ(1)); // 2

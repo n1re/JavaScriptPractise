@@ -4,7 +4,7 @@ class FibonacciNumbers {
 
     return {
       next() {
-        let rval = {value: b, done: false}
+        const rval = {value: b, done: false}
         b += a;
         a = rval.value;
 

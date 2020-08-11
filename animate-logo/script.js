@@ -47,8 +47,27 @@ class Rectangle {
   move(dx, dy) {
     this.x += dx;
     this.y += dy;
+
+    if (this.x > 400) {
+      const oppositeX = this.x - 400;
+      this.x = oppositeX;
+    } else if (this.x < 0) {
+      const oppositeX = 400 + this.x;
+      this.x = oppositeX;
+    }
+
+    if (this.y > 400) {
+      const oppositeY = this.y - 400;
+      this.y = oppositeY;
+    } else if (this.y < 0) {
+      const oppositeY = 400 + this.y;
+      this.y = oppositeY;
+    }
   }
 }
+// 112, 144, 16, 150,
+// 150, 106, 100, 16,
+// 272, 144, 16, 150,
 
 const renderer = new Renderer({
   canvas: document.getElementById('canvas'),

@@ -35,13 +35,31 @@ class Rectangle {
     this.width = width;
     this.height = height;
     this.fill = '#ffffff';
+    this.parts = [];
   }
 
   render(ctx) {
     const wasFillStyle = ctx.fillStyle;
     ctx.fillStyle = this.fill;
     ctx.fillRect(this.x, this.y, this.width, this.height);
+    for (const part of this.parts) {
+      ctx.fillRect(...part);
+    }
     ctx.fillStyle = wasFillStyle;
+  }
+
+  createParts() {
+    this.parts = [];
+
+    const x2 = this.x + this.width;
+    if (x2 > 400) {
+      this.parts.push([0, this.y, x2 - 400, this.height]);
+    }
+
+    const y2 = this.y + this.height;
+    if (y2 > 400) {
+      this.parts.push([this.x, 0, this.width, y2 - 400]);
+    }
   }
 
   move(dx, dy) {
@@ -63,6 +81,8 @@ class Rectangle {
       const oppositeY = 400 + this.y;
       this.y = oppositeY;
     }
+
+    this.createParts();
   }
 }
 // 112, 144, 16, 150,

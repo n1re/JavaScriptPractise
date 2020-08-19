@@ -1,27 +1,57 @@
-function sym() {
-  const nums = [];
-  const hasBeenRemoved = {};
+const assert = require('assert').strict;
 
-  for (const array of arguments) {
-    for (let i = 0; i < array.length; i++) {
-      const n = array[i];
-      const allNumsI = nums.findIndex(([_n]) => {
-        return _n === n;
-      });
-      if (hasBeenRemoved[n] === undefined) {
-        if (allNumsI === -1) {
-          nums.push([n, array]);
-        } else if (nums[allNumsI][1] !== array) {
-          hasBeenRemoved[n] = null;
-          nums.splice(allNumsI, 1);
-        }
-      }
+function getWithout(arr, n) {
+  const output = [];
+  for (const _n of arr) {
+    if (n !== _n) output.push(_n);
+  }
+  return output;
+}
+
+function getWithoutDuplicates(arr) {
+  const output = [];
+  for (const n of arr) {
+    if (output.indexOf(n) === -1) output.push(n);
+  }
+  return output;
+}
+
+function calcSym(a1, a2) {
+  const a1Unique = [];
+  for (const n of getWithoutDuplicates(a1)) {
+    const a2Index = a2.indexOf(n);
+    if (a2Index === -1) {
+      a1Unique.push(n);
+    } else {
+      a2 = getWithout(a2, n);
     }
   }
 
-  return nums.map((([ n ]) => n));
+  return [...a1Unique, ...getWithoutDuplicates(a2)].sort((a, b) => a - b);
 }
 
-console.log(
-  sym([1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5])
+assert.deepEqual(
+  calcSym([1, 2, 3], [5, 2, 1, 4]),
+  [3, 4, 5]
+);
+
+function sym() {
+  let a1 = arguments[0];
+  let a2 = arguments[1];
+  let output = null;
+  let nextIdx = 2;
+  output = calcSym(a1, a2);
+
+  while (nextIdx < arguments.length) {
+    a1 = output;
+    a2 = arguments[nextIdx++];
+    output = calcSym(a1, a2);
+  }
+
+  return output;
+}
+
+assert.deepEqual(
+  sym([1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5]),
+  [1, 4, 5]
 );

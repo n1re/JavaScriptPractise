@@ -1,4 +1,6 @@
-const test = require('../test');
+'use strict';
+
+const assert = require('assert');
 
 function getWithout(arr, n) {
   const output = [];
@@ -30,11 +32,9 @@ function calcSym(a1, a2) {
   return [...a1Unique, ...getWithoutDuplicates(a2)].sort((a, b) => a - b);
 }
 
-test(
-  [3, 4, 5],
-  calcSym,
-  [1, 2, 3],
-  [5, 2, 1, 4]
+assert.deepEqual(
+  calcSym([1, 2, 3], [5, 2, 1, 4]),
+  [3, 4, 5]
 );
 
 function sym() {
@@ -53,8 +53,7 @@ function sym() {
   return output;
 }
 
-test(
-  [1, 4, 5],
-  sym,
-  [1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5]
+assert.deepEqual(
+  sym([1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5]),
+  [1, 4, 5]
 );

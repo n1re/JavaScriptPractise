@@ -7,26 +7,26 @@ function swap(arr, i1, i2) {
     arr[i1] = arr[i2];
     arr[i2] = tmp;
 
-    return arr;
+    return [...arr];
 }
 
 function generate(arr) {
-    const indexes = [];
     const n = arr.length;
+    const indexes = (new Array(n)).fill(0);
     const permutations = [[...arr]];
-
-    for (let i = 0; i < n; i++) {
-        indexes[i] = 0;
-    }
 
     let i = 0;
     while (i < n) {
         if (indexes[i] < i) {
+            let swapped = null;
+
             if (i % 2 === 0) {
-                permutations.push([...swap(arr, 0, i)]);
+                swapped = swap(arr, 0, i);
             } else {
-                permutations.push([...swap(arr, indexes[i], i)]);
+                swapped = swap(arr, indexes[i], i);
             }
+
+            permutations.push(swapped);
 
             indexes[i] += 1;
             i = 0;

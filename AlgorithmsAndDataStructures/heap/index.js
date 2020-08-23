@@ -15,7 +15,7 @@ function swap(arr, i1, i2) {
 function heap(arr) {
     const n = arr.length;
     const c = (new Array(n)).fill(0);
-    const permutations = [[...arr]];
+    const output = [[...arr]];
 
     let i = 0;
     while(i < n) {
@@ -28,7 +28,7 @@ function heap(arr) {
                 swapped = swap(arr, c[i], i);
             }
 
-            permutations.push(swapped);
+            output.push(swapped);
 
             c[i] += 1;
             i = 0;
@@ -38,7 +38,7 @@ function heap(arr) {
         }
     }
 
-    return permutations;
+    return output;
 }
 
 module.exports = heap;

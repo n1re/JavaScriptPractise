@@ -4,7 +4,7 @@ const test = require('./test');
 
 test(heap);
 
-function swap(arr, i1, i2) {
+function swapAndCopy(arr, i1, i2) {
     const tmp = arr[i1];
     arr[i1] = arr[i2];
     arr[i2] = tmp;
@@ -15,20 +15,20 @@ function swap(arr, i1, i2) {
 function heap(arr) {
     const n = arr.length;
     const c = (new Array(n)).fill(0);
-    const output = [[...arr]];
+    const premutations = [[...arr]];
 
     let i = 0;
     while(i < n) {
         if (c[i] < i) {
-            let swapped = null;
+            let premutation = null;
 
             if (i % 2 === 0) {
-                swapped = swap(arr, 0, i);
+                premutation = swapAndCopy(arr, 0, i);
             } else {
-                swapped = swap(arr, c[i], i);
+                premutation = swapAndCopy(arr, c[i], i);
             }
 
-            output.push(swapped);
+            premutations.push(premutation);
 
             c[i] += 1;
             i = 0;
@@ -38,7 +38,5 @@ function heap(arr) {
         }
     }
 
-    return output;
+    return premutations;
 }
-
-module.exports = heap;

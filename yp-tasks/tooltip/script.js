@@ -7,9 +7,6 @@
 
         this.el.classList.add(this.name);
         document.body.appendChild(this.el);
-
-        this.onHide = this.onHide.bind(this);
-        this.onShow = this.onShow.bind(this);
       
         this.listeners = [];
       }
@@ -19,7 +16,7 @@
       }
     
       get activeCls() {
-        return 'tooltip_active';
+        return `${this.name}_active`;
       }
 
       get indent() {
@@ -41,40 +38,49 @@
           return this;
       }
 
-      onShow(event) {
-        const target = event.target;
-        const text = target.dataset.tooltip;
-        const { top, bottom, left, height } = target.getBoundingClientRect();
-        this.el.style.left = `${left}px`;
-        const toolTipHeight = 16 + 2 + 10;
-        if (top < toolTipHeight) {
-          this.el.style.top = `${bottom}px`;
-        } else {
-          this.el.style.top = `${top - toolTipHeight}px`;
-        }
-        this.el.textContent = text;
+      onShow = (event) => {
+        /**
+         * @todo use position: fixed
+         */
+        const targetEl = event.target;
+
+        this.el.textContent = targetEl.dataset.tooltip;
         this.el.classList.add(this.activeCls);
-        //Реализуйте этот метод
+
+        const targetRect = targetEl.getBoundingClientRect();
+        const thisRect = this.el.getBoundingClientRect();
+
+        let top = targetRect.bottom + this.indent;
+        const left = targetRect.left;
+
+        if (top + thisRect.height > document.documentElement.clientHeight) {
+          top = targetRect.top - thisRect.height - this.indent;
+        }
+
+        this.el.style.top = `${top + window.scrollY}px`;
+        this.el.style.left = `${left + window.scrollX}px`;
       }
 
-      onHide() {
+      onHide = () => {
         this.el.classList.remove(this.activeCls);
         //Реализуйте этот метод
       }
 
       attach(root) {
+          /**
+           * @todo use mouseenter and mouseleave
+           */
           this
               .delegate('mouseover', root, '[data-tooltip]', this.onShow)
               .delegate('mouseout', root, '[data-tooltip]', this.onHide);
       }
 
       detach() {
-        this.listeners.forEach(listner => {
-          const { element, eventName, fn } = listner;
-          element.removeEventListener(eventName, fn);
-        });
+        for (const { element, eventName, fn } of this.listeners) {
+          element.removeEventListner(eventName, fn);
+        }
+
         this.listeners = [];
-        //Реализуйте этот метод
       }
   }
 

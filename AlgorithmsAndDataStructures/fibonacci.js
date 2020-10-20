@@ -1,4 +1,4 @@
-const assert = require('assert').strict;
+const assert = require('assert');
 const logExecutionTime = require('./logExecutionTime');
 
 (function(){
@@ -25,8 +25,8 @@ const logExecutionTime = require('./logExecutionTime');
 })();
 
 function test(fibonacci) {
-    assert.equal(fibonacci(1), 1);
-    assert.equal(fibonacci(2), 1);
-    assert.equal(fibonacci(3), 2);
-    assert.equal(fibonacci(10), 55);
+    assert.strictEqual(fibonacci(1), 1);
+    assert.strictEqual(fibonacci(2), 1);
+    assert.strictEqual(fibonacci(3), 2);
+    assert.strictEqual(fibonacci(10), 55);
 }

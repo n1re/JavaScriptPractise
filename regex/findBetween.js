@@ -1,0 +1,1 @@
+const findSttyle = /(?<=\<link rel="stylesheet" href=")(\S*)(?=">)/gm;

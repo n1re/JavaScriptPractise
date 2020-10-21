@@ -1,23 +1,19 @@
 'use strict';
 
-function get(obj, path, separator = '.') {
-  const _path = path.split(separator);
+function get(obj, path, defaultValue, separator = '.') {
+  const keys = path.split(separator);
 
-  if (_path.length === 0) return;
+  let output = obj;
 
-  let current = obj[path[0]];
+  for (const key of keys) {
+    const next = output[key];
 
-  if (current === undefined) return;
+    if (next === undefined) return defaultValue;
 
-  for (let i = 1; i < _path.length; i++) {
-    const next = current[_path[i]];
-
-    if (next === undefined) return;
-
-    current = next;
+    output = next;
   }
 
-  return current;
+  return output;
 }
 
 const assert = require('assert');
@@ -36,9 +32,11 @@ const testData = {
 assert.strictEqual(get(testData, 'a'), 1);
 assert.strictEqual(get(testData, 'b.c'), 2);
 assert.strictEqual(get(testData, 'c'), undefined);
+assert.strictEqual(get(testData, 'c.d.e'), undefined);
 assert.strictEqual(get(testData, 'd'), null);
 assert.strictEqual(get(testData, 'b.e.d'), 3);
 assert.deepStrictEqual(get(testData, 'b.e'), testData.b.e);
+assert.deepStrictEqual(get(testData, 'z.b.e', false), false);
 /**
  * @todo handle case below
  */

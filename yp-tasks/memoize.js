@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * @todo learn, i solved it not by myself :(
+ */
+
 function getData() {
 	return new Promise(resolve => {
 		setTimeout(() => resolve(42), 1000)

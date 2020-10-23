@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * @todo repeat
+ */
+
 const assert = require('assert');
 
 function flatten(list) {

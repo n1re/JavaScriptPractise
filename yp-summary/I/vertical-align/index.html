@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>align</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <div class="conspect">
+    <div class="conspect__illustrated">
+      <div class="conspect__thesis">
+        Вертикальное выравнивание на outer не работает,
+        так как как выравнивание через vertical-align
+        влияет на сам элемент, а не на его содержимое:
+      </div>
+      <div class="outer outer_size_known outer_align_inline">
+        <div class="inner inner_size_known inner_align_inline"></div>
+      </div>
+    </div>
+
+    <div class="conspect__illustrated">
+      <div class="conspect__thesis">
+        vertical-align выравнивает инлайновый элемент <b>относительно</b>
+        соседних элементов:
+      </div>
+      <div class="outer outer_size_known outer_align_inline">
+        <div class="inner inner_size_large inner_align_inline"></div>
+        <div class="inner inner_size_known inner_align_inline"></div>
+      </div>
+    </div>
+
+    <div class="conspect__illustrated">
+      <div class="conspect__thesis">
+        Можно выровнять элемент при помощи таблицы:
+      </div>
+      <table class="outer outer_size_known">
+        <td>
+          <div class="inner inner_size_known"></div>
+        </td>
+      </table>
+    </div>
+
+    <div class="conspect__illustrated">
+      <div class="conspect__thesis">
+        Или же задать свойства табличного отображения блокам
+        и добавить vertical-align к блоку-ячейке:
+      </div>
+      <div class="outer outer_size_known property_display_table">
+        <div class="property_display_table-cell property_vertical_align_middle">
+          <div class="inner inner_size_known"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

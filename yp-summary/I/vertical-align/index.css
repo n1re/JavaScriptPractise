@@ -1,0 +1,76 @@
+/*
+  Доделать конспект по статье:
+  https://habr.com/ru/company/netcracker/blog/277433/
+*/
+
+:root {
+  --indent-xs: 5px;
+  --indent-s: calc(var(--indent-xs) * 2);
+  --indent-m: calc(var(--indent-s) * 2);
+}
+
+.outer {
+  background-color: #ffc;
+}
+
+.outer_size_known {
+  width: 200px;
+  height: 200px;
+}
+
+.outer_align_inline {
+  vertical-align: middle;
+}
+
+.inner {
+  background-color: #fcc;
+}
+
+.inner_size_known {
+  width: 50px;
+  height: 50px;
+}
+
+.inner_size_large {
+  width: 100px;
+  height: 100px;
+}
+
+.inner_align_inline {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.conspect {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.conspect__thesis {
+  width: 200px;
+  box-sizing: border-box;
+  padding: var(--indent-xs) var(--indent-s);
+  background-color: whitesmoke;
+  border-radius: 3px;
+  margin-bottom: var(--indent-s);
+}
+
+.conspect__illustrated {
+  margin-bottom: var(--indent-m)
+}
+
+b {
+  color: #414243;
+}
+
+.property_display_table {
+  display: table;
+}
+
+.property_display_table-cell {
+  display: table-cell;
+}
+
+.property_vertical_align_middle {
+  vertical-align: middle;
+}

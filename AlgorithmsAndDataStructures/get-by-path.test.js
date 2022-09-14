@@ -20,27 +20,7 @@ function test(get) {
   assert.strictEqual(get(testData, 'd'), null);
   assert.strictEqual(get(testData, 'b.e.d'), 3);
   assert.deepStrictEqual(get(testData, 'b.e'), testData.b.e);
-  // assert.deepStrictEqual(get(testData, 'z.b.e', false), false);
+  assert.deepStrictEqual(get(testData, 'z.b.e', false), false);
 }
 
 test(get)
-/**
- * @todo handle case below
- */
-// assert.strictEqual(get(testData, 'd.e'), undefined);
-
-function repeatGet(value, path) {
-  const parts = path.split('.')
-
-  while(parts.length > 0) {
-    if (value === undefined) {
-      return value
-    }
-
-    value = value[parts.shift()]
-  }
-  
-  return value
-}
-
-test(repeatGet)
